@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>v-model 数据源绑定</title>
+	<script src="js/vue-2.5.16/vue-dev.js" type="text/javascript"></script>
+</head>
+<body>
+	<h1>v-model 数据源绑定</h1>
+	<hr>
+	<div id="app">
+		<p>原始文本信息：{{message}}</p>
+		<p>v-model: <input type="text" v-model="message"></p>
+		<p>v-model.lazy: <input type="text" v-model.lazy="message"> 焦点离开文本框后刷新</p>
+		<p>v-model.number: <input type="text" v-model.number="message"> 文本框必须先输入数字后再输入字母，焦点离开文本框后字母会被删除</p>
+		<p>v-model.trim: <input type="text" v-model.trim="message"> 去掉文本框输入的空格，输入空格是无效的</p>
+		<hr>
+		<textarea cols="30" rows="10" v-model="message"></textarea>
+		<hr>
+		<p>(多选框绑定一个值)</p>
+		<input type="checkbox" v-model="isTrue">
+		<label for="isTrue">{{isTrue}}</label>
+		<hr>
+		<p>
+			<p>多选框绑定数组</p>
+			<input type="checkbox" value="aa" id="aa" v-model="web_names">
+			<label for="isTrue">aa</label>
+			<input type="checkbox" value="bb" id="bb" v-model="web_names">
+			<label for="isTrue">bb</label>
+			<input type="checkbox" value="cc" id="cc" v-model="web_names">
+			<label for="isTrue">cc</label>
+			<p>{{web_names}}</p>
+		</p>
+		<hr>
+		<p>
+			<p>单选框绑定数据</p>
+			<input type="radio" id="nan" value="男" v-model="sex">
+			<label for="nan">男</label>
+			<input type="radio" id="nv" value="女" v-model="sex">
+			<label for="nv">女</label>
+			<p>你选择的性别是：{{sex}}</p>
+		</p>
+	</div>
+	<script type="text/javascript">
+		var app = new Vue({
+			el: "#app",
+			data: {
+				message: 'hello Vue!',
+				isTrue: true,
+				web_names: [],
+				sex: '男'
+			}
+		})
+	</script>
+</body>
+</html>

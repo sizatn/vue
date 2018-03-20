@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue template 三种写法</title>
+	<script src="js/vue-2.5.16/vue-dev.js" type="text/javascript"></script>
+</head>
+<body>
+	<h1>vue template 三种写法</h1>
+	<hr>
+	<div id="app">
+		{{message}}
+	</div>
+	<!-- 第二种模版 -->
+	<template id="temp">
+		<h2 style="color: red">我是template模版</h2>
+	</template>
+	<!-- 第三张模版 -->
+	<script id="scriptTemplate" type="x-template">
+		<h2 style="color: red">我是script template模版</h2>
+	</script>
+	<script type="text/javascript">
+		var app = new Vue({
+			el: "#app",
+			data: {
+				message: 'hello Vue!'
+			},
+			// 第一种模版
+			// template: `
+			// 	<h2 style="color: red">我是选项模版</h2>
+			// `
+			// 第二种模版
+			// template: '#temp'
+			// 第三张模版
+			template: '#scriptTemplate'
+
+		})
+	</script>
+</body>
+</html>

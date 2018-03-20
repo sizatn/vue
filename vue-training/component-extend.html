@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>component 父子继承</title>
+	<script src="js/vue-2.5.16/vue-dev.js" type="text/javascript"></script>
+</head>
+<body>
+	<h1>component 父子继承</h1>
+	<hr>
+	<div id="app">
+		<sizatn></sizatn>
+	</div>
+	<script type="text/javascript">
+		var city = {
+			template: '<div style="color: green;">szt from Guangzhou</div>'
+		}
+
+		var sizatnComponent = {
+			template: `
+				<div style="color: red;">
+				<p>sizatn from Guangzhou</p>
+				<city></city>
+				</div>
+			`,
+			components: {
+				"city": city
+			}
+		}
+
+		var app = new Vue({
+			el: "#app",
+			components: {
+				"sizatn": sizatnComponent
+			}
+		})
+	</script>
+</body>
+</html>

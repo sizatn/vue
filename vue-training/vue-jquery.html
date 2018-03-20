@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue jquery</title>
+	<script src="js/vue-2.5.16/vue-dev.js" type="text/javascript"></script>
+	<script src="js/jQuery-3.3.1/jquery-3.3.1.min.js" type="text/javascript"></script>
+</head>
+<body>
+	<h1>vue jquery</h1>
+	<hr>
+	<div id="app">
+		{{message}}
+	</div>
+	<script type="text/javascript">
+		var app = new Vue({
+			el: "#app",
+			data: {
+				message: 'hello Vue!'
+			},
+			mounted: function () {
+				$('#app').html('我是jQuery');
+			}
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>v-on</title>
+	<script src="js/vue-2.5.16/vue-dev.js" type="text/javascript"></script>
+</head>
+<body>
+	<h1>v-on</h1>
+	<hr>
+	<div id="app">
+		本场比赛得分：{{score}}
+		<p>
+			<button v-on:click="plusScore">加分</button>
+			<button @click="minusScore">减分</button><br>
+			<input type="text" name="输入分数" @keyup.enter="onEnter" v-model="score1">
+		</p>
+	</div>
+	<hr>
+	<div id="app1">
+		<p>{{ message.split(' ').reverse().join(' ') }}</p>
+		<button @click="reverseString">逆转消息</button>
+	</div>
+	<script type="text/javascript">
+		var app = new Vue({
+			el: "#app",
+			data: {
+				score: 0,
+				score1: 1
+			},
+			methods: {
+				plusScore: function () {
+					this.score++;
+				},
+				minusScore: function () {
+					this.score--;
+				},
+				onEnter: function () {
+					this.score = this.score + parseInt(this.score1);
+				}
+			}
+		});
+		var app1 = new Vue({
+			el: "#app1",
+			data: {
+				message: 'Hello Vue!'
+			},
+			methods: {
+				reverseString: function () {
+					this.message = this.message.split(' ').reverse().join(' ');
+				}
+			}
+		})
+	</script>
+	
+</body>
+</html>
