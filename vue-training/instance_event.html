@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>instance event 实例事件</title>
+	<script src="js/vue-2.5.16/vue-dev.js" type="text/javascript"></script>
+</head>
+<body>
+	<h1>instance event 实例事件</h1>
+	<hr>
+	<div id="app">
+		{{count}}
+		<p><button @click="add">add</button></p>
+		<button onclick="minus()">minus</button>
+		<button onclick="minusOne()">minus one</button>
+		<button onclick="off()">off</button>
+	</div>
+	<script type="text/javascript">
+		var app = new Vue({
+			el: "#app",
+			data:{
+				count:1
+			},
+			methods: {
+				add: function () {
+					this.count++;
+				}
+			}
+		});
+
+		app.$on("minus", function () {
+			console.log('执行了minus方法');
+			this.count--;
+		});
+
+		app.$once("minusOne", function () {
+			console.log('执行了一次minus方法');
+			this.count--;
+		});
+
+		function minus () {
+			app.$emit('minus');
+		};
+
+		function minusOne () {
+			app.$emit('minusOne');
+		};
+
+		function off () {
+			app.$off('minus');
+		};
+	</script>
+</body>
+</html>

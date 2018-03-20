@@ -17,7 +17,13 @@
 			updated: function () {
 				console.log('mixins的updated方法，数字发生变化，变成' + this.num);
 			}
-		}
+		};
+
+		Vue.mixin({
+			updated: function () {
+				console.log('我是全局mixins');
+			}
+		});
 
 		var app = new Vue({
 			el: "#app",
@@ -35,11 +41,6 @@
 			}
 		});
 
-		Vue.mixin({
-			updated: function () {
-				console.log('我是全局mixins');
-			}
-		})
 	</script>
 </body>
 </html>

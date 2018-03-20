@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>instance methods 实例方法</title>
+	<script src="js/vue-2.5.16/vue-dev.js" type="text/javascript"></script>
+</head>
+<body>
+	<h1>instance methods 实例方法</h1>
+	<hr>
+	<div id="app"></div>
+	<p><button onclick="destroy()">卸载</button></p>
+	<p><button onclick="reload()">刷新</button></p>
+	<p><button onclick="tick()">更改数据</button></p>
+	<script type="text/javascript">
+		var aa = Vue.extend({
+			template: `<p>{{message}}</p>`,
+			data: function () {
+				return {
+					message: 'hello Vue!'
+				}
+			},
+			mounted: function () {
+				console.log('mounted 被创建')
+			},
+			destroyed: function () {
+				console.log('destroy 销毁之后')
+			},
+			updated: function () {
+				console.log('updated 更新之后')
+			}
+		});
+		
+		var aa = new aa().$mount("#app");
+
+		function destroy () {
+			aa.$destroy();
+		};
+		function reload () {
+			aa.$forceUpdate();
+		};
+		function tick () {
+			aa.message = "update message info ";
+			aa.$nextTick(function () {
+				console.log('message 更新完后我被调用了');
+			})
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>internal component 内部组件</title>
+	<script src="js/vue-2.5.16/vue-dev.js" type="text/javascript"></script>
+</head>
+<body>
+	<h1>internal component 内部组件</h1>
+	<hr>
+	<div id="app">
+		<sizatn>
+			<span slot="url">{{sizatn.url}}</span>
+			<span slot="name">{{sizatn.name}}</span>
+			<span slot="lang">{{sizatn.lang}}</span>
+		</sizatn>
+	</div>
+
+	<template id="sizatn">
+		<div>
+			<p>url: <slot name="url"></solt></p>
+			<p>name: <slot name="name"></solt></p>
+			<p>lang: <slot name="lang"></solt></p>
+		</div>
+	</template>
+
+	<script type="text/javascript">
+		var sizatn = {
+			template: "#sizatn"
+		}
+
+		var app = new Vue({
+			el: "#app",
+			data: {
+				sizatn: {
+					url: 'http://wwww.baidu.com',
+					name: 'sizatn',
+					lang: 'java'
+				}
+			},
+			components: {
+				"sizatn": sizatn
+			}
+		})
+	</script>
+</body>
+</html>
